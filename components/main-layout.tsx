@@ -172,7 +172,7 @@ export function MainLayout() {
         {/* Hero Video Section */}
         <div className="relative">
           <VideoBackground
-            src="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz.mp4"
+            src="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-QDsXsGq4Z4DIvQJ4HMEG3ioMpQ6FV6.mp4"
             priority={true}
             height="80vh"
             className="w-full"

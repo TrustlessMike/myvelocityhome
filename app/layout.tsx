@@ -63,11 +63,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/1.png", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    shortcut: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: [{ url: "/1.png", type: "image/png" }],
     apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
   },
   generator: "v0.dev",
@@ -81,10 +81,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="preload"
-          href="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz.mp4"
+          href="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-QDsXsGq4Z4DIvQJ4HMEG3ioMpQ6FV6.mp4"
           as="video"
           type="video/mp4"
         />
