@@ -68,80 +68,9 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
 
   return (
     <div>
-      {/* Loan Options Section */}
+      {/* Why Choose Us Section (Moved Up) */}
       <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeIn}
-        transition={{ duration: 0.6 }}
-        className="py-16 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Loan Options for Every Need</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Whether you're a first-time homebuyer or looking to refinance, we have the perfect loan solution for you.
-            </p>
-          </div>
-
-          <p className="text-center text-sm text-slate-500 mb-4 md:hidden">Swipe to see more options</p>
-
-          <Carousel
-            plugins={[
-              Autoplay()
-            ]}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
-          >
-            <CarouselContent className="-ml-1 py-4">
-              {loanOptions.map((loan, i) => (
-                <CarouselItem key={i} className="pl-1 md:basis-1/2">
-                  <div className="p-1">
-                    <motion.div variants={fadeIn} whileHover={{ y: -5, transition: { duration: 0.2 } }} className="h-full">
-                      <div className="velocity-card equal-height">
-                        <div className="velocity-card-content">
-                          <h3 className="text-xl font-bold mb-2">{loan.title}</h3>
-                          <p className="text-slate-600 mb-4 text-sm min-h-[60px]">{loan.description}</p>
-                          <ul className="space-y-2 mb-6 flex-grow">
-                            {loan.features.map((feature, j) => (
-                              <li key={j} className="flex items-start text-sm">
-                                <CheckCircle className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <PreapprovalButton
-                              className="mt-auto w-full"
-                              variant="default"
-                            >
-                              Learn More
-                            </PreapprovalButton>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="ml-[-10px] sm:ml-[-20px] md:ml-[-30px]" />
-            <CarouselNext className="mr-[-10px] sm:mr-[-20px] md:mr-[-30px]" />
-          </Carousel>
-        </div>
-      </motion.section>
-
-      {/* Meet the Team Section */}
-      <section id="team-section">
-        <MeetTheTeam />
-      </section>
-
-      {/* Why Choose Us Section */}
-      <motion.section
+        id="about-us-section"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -223,6 +152,78 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Loan Options Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+        transition={{ duration: 0.6 }}
+        className="py-16 bg-white"
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Loan Options for Every Need</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Whether you're a first-time homebuyer or looking to refinance, we have the perfect loan solution for you.
+            </p>
+          </div>
+
+          <p className="text-center text-sm text-slate-500 mb-4 md:hidden">Swipe to see more options</p>
+
+          <Carousel
+            plugins={[
+              Autoplay()
+            ]}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-xs sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
+          >
+            <CarouselContent className="-ml-1 py-4">
+              {loanOptions.map((loan, i) => (
+                <CarouselItem key={i} className="pl-1 md:basis-1/2">
+                  <div className="p-1">
+                    <motion.div variants={fadeIn} whileHover={{ y: -5, transition: { duration: 0.2 } }} className="h-full">
+                      <div className="velocity-card equal-height">
+                        <div className="velocity-card-content">
+                          <h3 className="text-xl font-bold mb-2">{loan.title}</h3>
+                          <p className="text-slate-600 mb-4 text-sm min-h-[60px]">{loan.description}</p>
+                          <ul className="space-y-2 mb-6 flex-grow">
+                            {loan.features.map((feature, j) => (
+                              <li key={j} className="flex items-start text-sm">
+                                <CheckCircle className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <PreapprovalButton
+                              className="mt-auto w-full"
+                              variant="default"
+                            >
+                              Learn More
+                            </PreapprovalButton>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="ml-[-10px] sm:ml-[-20px] md:ml-[-30px]" />
+            <CarouselNext className="mr-[-10px] sm:mr-[-20px] md:mr-[-30px]" />
+          </Carousel>
+        </div>
+      </motion.section>
+
+      {/* Meet the Team Section */}
+      <section id="team-section">
+        <MeetTheTeam />
+      </section>
 
       {/* Get Started Section */}
       <motion.section

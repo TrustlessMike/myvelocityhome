@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, ReactNode } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X, CheckCircle } from "lucide-react"
@@ -17,7 +17,7 @@ import { ApplyNowPopup } from "@/components/apply-now-popup"
 import { VideoBackground } from "@/components/video-background"
 import { PreapprovalButton } from "@/components/preapproval-button"
 
-export function MainLayout() {
+export function MainLayout({ children }: { children: ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -84,12 +84,9 @@ export function MainLayout() {
               <a href="#team-section" className="text-base font-medium hover:text-primary transition-colors">
                 Our Team
               </a>
-              <a href="#calculator-section" className="text-base font-medium hover:text-primary transition-colors">
+              <a href="/calculator" className="text-base font-medium hover:text-primary transition-colors">
                 Calculator
               </a>
-              <PreapprovalButton className="text-base font-medium hover:text-primary transition-colors">
-                Apply Now
-              </PreapprovalButton>
               <a
                 href={APPLICATION_URL}
                 target="_blank"
@@ -98,6 +95,9 @@ export function MainLayout() {
               >
                 Contact
               </a>
+              <PreapprovalButton className="text-base font-medium hover:text-primary transition-colors">
+                Apply Now
+              </PreapprovalButton>
             </div>
 
             {/* Mobile Menu Button */}
@@ -137,7 +137,7 @@ export function MainLayout() {
                     Our Team
                   </a>
                   <a
-                    href="#calculator-section"
+                    href="/calculator"
                     className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -150,16 +150,18 @@ export function MainLayout() {
                     className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Apply Now
+                    Contact
                   </a>
                   <a
                     href={APPLICATION_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
                   >
-                    Contact
+                    Apply Now
                   </a>
                 </div>
               </motion.nav>
@@ -169,87 +171,7 @@ export function MainLayout() {
       </motion.header>
 
       <main className="flex-1 pb-16">
-        {/* Hero Video Section */}
-        <div className="relative">
-          <VideoBackground
-            src="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-QDsXsGq4Z4DIvQJ4HMEG3ioMpQ6FV6.mp4"
-            priority={true}
-            height="80vh"
-            className="w-full"
-            overlayClassName="bg-black/50"
-          />
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-6"
-            >
-              <h2 className="text-2xl md:text-3xl font-medium mb-2">Velocity Home Loans</h2>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">Fast-Track Your Home Loan</h1>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl"
-            >
-              Competitive rates, personalized service, and a streamlined process to help you achieve your homeownership
-              dreams.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex justify-center"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <PreapprovalButton size="lg" className="bg-white text-primary hover:bg-blue-50">
-                  Get Pre-Approved
-                </PreapprovalButton>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
-            >
-              {[
-                { icon: <CheckCircle className="h-5 w-5" />, text: "Competitive Rates" },
-                { icon: <CheckCircle className="h-5 w-5" />, text: "Fast Pre-Approvals" },
-                { icon: <CheckCircle className="h-5 w-5" />, text: "Personalized Service" },
-              ].map((item, i) => (
-                <motion.div key={i} variants={fadeIn} className="flex items-center justify-center space-x-2">
-                  <div className="text-white">{item.icon}</div>
-                  <span>{item.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 py-8">
-          {/* Home Section */}
-          <div className="mb-16">
-            <LandingPage applicationUrl={APPLICATION_URL} />
-          </div>
-
-          {/* Calculator Section */}
-          <div id="calculator-section" className="pt-8 mt-8 border-t">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Mortgage Calculator</h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Use our calculator to estimate your monthly mortgage payments and explore different loan scenarios.
-              </p>
-            </div>
-            <MortgageCalculator />
-          </div>
-        </div>
+        {children}
       </main>
 
       {/* Footer */}
@@ -276,37 +198,6 @@ export function MainLayout() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-4">Loan Products</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    Conventional Loans
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    FHA Loans
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    VA Loans
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    Jumbo Loans
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    Refinancing
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2">
                 <li>
@@ -315,19 +206,9 @@ export function MainLayout() {
                   </a>
                 </li>
                 <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
+                  <a href="#about-us-section" className="text-slate-400 hover:text-white">
                     About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-white">
-                    News
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a
@@ -351,9 +232,9 @@ export function MainLayout() {
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-slate-400">
-                    <span className="sr-only">Email:</span> {CompanyInfo.email}
-                  </span>
+                  <a href="mailto:sam@myvelocitymortgage.com" className="text-slate-400 hover:text-white">
+                    <span className="sr-only">Email:</span> sam@myvelocitymortgage.com
+                  </a>
                 </li>
                 <li className="flex items-start">
                   <address className="text-slate-400 not-italic">
@@ -398,20 +279,4 @@ export function MainLayout() {
       <ApplyNowPopup />
     </div>
   )
-}
-
-// Animation variants
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
 }
