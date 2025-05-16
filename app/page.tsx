@@ -30,7 +30,7 @@ export default function HomePage() {
       {/* Hero Video Section */}
       <div className="relative">
         <VideoBackground
-          src="https://2cpb0aywln35qejo.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-QDsXsGq4Z4DIvQJ4HMEG3ioMpQ6FV6.mp4"
+          src="https://cryhpvwjl9tfc2pb.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-oNJALMHnzjLR4jdYAeyXE2hp3Ngdhv.mp4"
           priority={true}
           height="80vh"
           className="w-full"
