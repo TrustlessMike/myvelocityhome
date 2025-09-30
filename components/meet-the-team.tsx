@@ -51,6 +51,21 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
             imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-dJsLeMoP1kwgLnKW6nxn83eiuEZlZB.png"
             id="christa"
           />
+
+          <TeamMember
+            name="Robert Jastrzebski"
+            title="Senior Loan Officer"
+            email="rob@myvelocitymortgage.com"
+            phone="(734) 748-2416"
+            nmls="2654571"
+            bio="I've been working in client-based solutions for over 15 years, and what drives me is keeping things straightforward, saving my clients money, reducing stress, and being transparent every step of the way. I believe in educating when needed, so you always understand the 'why' behind the decisions we make together.
+
+For me, building relationships is the key to finding the best solutions. I take the time to listen, understand your goals, and then figure out the smartest way forward.
+
+I live here in Brighton with my wife, Bridgette, who teaches in the community, and our three kids—Adalynn, Robby, and Ben. Brighton has been home for the past five years, and it's important to me to serve my clients with the same care and honesty I'd want for my own family."
+            imageSrc="/Photo for Rob.JPG"
+            id="robert"
+          />
         </div>
       </div>
     </section>

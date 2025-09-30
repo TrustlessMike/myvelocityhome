@@ -1,8 +1,7 @@
 "use server"
 
 import { put } from "@vercel/blob"
-import puppeteer from "puppeteer-core"
-import chromium from "@sparticuz/chromium"
+// NOTE: puppeteer-core and @sparticuz/chromium are heavy; we lazy-load them inside the function
 
 interface MortgageData {
   homePrice: number
@@ -22,6 +21,10 @@ interface MortgageData {
 
 export async function generateMortgagePDF(data: MortgageData) {
   try {
+    // Lazy-load heavy PDF dependencies to avoid slowing down dev server startup
+    const { default: puppeteer } = await import("puppeteer-core")
+    const { default: chromium } = await import("@sparticuz/chromium")
+
     // Format currency for display
     const formatCurrency = (value: number) => {
       return new Intl.NumberFormat("en-US", {
