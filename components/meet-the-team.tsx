@@ -65,6 +65,7 @@ For me, building relationships is the key to finding the best solutions. I take 
 I live here in Brighton with my wife, Bridgette, who teaches in the community, and our three kids—Adalynn, Robby, and Ben. Brighton has been home for the past five years, and it's important to me to serve my clients with the same care and honesty I'd want for my own family."
             imageSrc="/Photo for Rob.JPG"
             id="robert"
+            applicationUrl="https://myvelocity.my1003app.com/2654571/register?time=1763754973769"
           />
         </div>
       </div>

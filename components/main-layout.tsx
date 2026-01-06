@@ -69,7 +69,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
             <div className="flex items-center">
               <Link href="/" className="flex items-center" aria-label="Velocity Home Loans - Home">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png"
+                  src="/velocity-logo.png"
                   alt="Velocity Home Loans Logo"
                   width={150}
                   height={50}
@@ -184,7 +184,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
             <div>
               <div className="flex items-center mb-4">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png"
+                  src="/velocity-logo.png"
                   alt="Velocity Home Loans Logo"
                   width={150}
                   height={50}

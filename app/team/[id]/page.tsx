@@ -24,6 +24,17 @@ const teamMembers = [
     bio: "Christa Spencer brings over a decade of expertise in the mortgage industry, with a passion for helping clients navigate the complexities of home financing. As a dedicated mortgage professional, she specializes in creating personalized loan solutions that align with her clients' unique financial goals and circumstances. Christa is known for her exceptional communication skills and ability to simplify the mortgage process, making it accessible and stress-free for first-time homebuyers and experienced homeowners alike. Her commitment to client education ensures that borrowers understand every aspect of their mortgage options, empowering them to make confident decisions. With a reputation for responsiveness and attention to detail, Christa consistently delivers a seamless mortgage experience from application to closing.",
     imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-dJsLeMoP1kwgLnKW6nxn83eiuEZlZB.png",
   },
+  {
+    id: "robert",
+    name: "Robert Jastrzebski",
+    title: "Senior Loan Officer",
+    email: "rob@myvelocitymortgage.com",
+    phone: "(734) 748-2416",
+    nmls: "2654571",
+    bio: "I've been working in client-based solutions for over 15 years, and what drives me is keeping things straightforward, saving my clients money, reducing stress, and being transparent every step of the way. I believe in educating when needed, so you always understand the 'why' behind the decisions we make together.\n\nFor me, building relationships is the key to finding the best solutions. I take the time to listen, understand your goals, and then figure out the smartest way forward.\n\nI live here in Brighton with my wife, Bridgette, who teaches in the community, and our three kids—Adalynn, Robby, and Ben. Brighton has been home for the past five years, and it's important to me to serve my clients with the same care and honesty I'd want for my own family.",
+    imageSrc: "/Photo for Rob.JPG",
+    applicationUrl: "https://myvelocity.my1003app.com/2654571/register?time=1763754973769",
+  },
 ]
 
 export default function TeamMemberPage({ params }: { params: { id: string } }) {
@@ -47,6 +58,7 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
             imageSrc={member.imageSrc}
             id={member.id}
             reviewsUrl={member.reviewsUrl}
+            applicationUrl={(member as any).applicationUrl}
           />
         </div>
       </div>

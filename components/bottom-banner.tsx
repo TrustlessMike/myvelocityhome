@@ -15,7 +15,7 @@ export function BottomBanner({ applicationUrl }: BottomBannerProps) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png"
+              src="/velocity-logo.png"
               alt="Velocity Home Loans"
               width={120}
               height={40}

@@ -158,7 +158,7 @@ export async function generateMortgagePDF(data: MortgageData) {
         </head>
         <body>
           <div class="logo-container">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png" alt="Velocity Home Loans" class="logo">
+            <img src="https://www.myvelocitymortgage.com/velocity-logo.png" alt="Velocity Home Loans" class="logo">
           </div>
           
           <div class="header">
@@ -275,7 +275,7 @@ export async function generateMortgagePDF(data: MortgageData) {
             <p>NMLS #2706011</p>
           </div>
           
-          <div class="watermark" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png');"></div>
+          <div class="watermark" style="background-image: url('https://www.myvelocitymortgage.com/velocity-logo.png');"></div>
         </body>
       </html>
     `

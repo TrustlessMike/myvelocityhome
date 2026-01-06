@@ -6,11 +6,11 @@ export function generateMortgageBrokerSchema() {
     description:
       "Velocity Home Loans offers competitive mortgage rates, personalized service, and a streamlined application process to help you achieve your homeownership dreams.",
     url: "https://www.myvelocitymortgage.com",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png",
+    logo: "https://www.myvelocitymortgage.com/velocity-logo.png",
     sameAs: ["https://www.zillow.com/lender-profile/samine186/"],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "203 Brookside Lane",
+      streetAddress: "822 E Grand River Ave",
       addressLocality: "Brighton",
       addressRegion: "MI",
       postalCode: "48116",
@@ -39,7 +39,7 @@ export function generateReviewSchema() {
       "@type": "FinancialService",
       name: "Velocity Home Loans",
       image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png",
+        "https://www.myvelocitymortgage.com/velocity-logo.png",
     },
     ratingValue: "5.0",
     bestRating: "5",

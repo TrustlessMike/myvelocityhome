@@ -14,12 +14,7 @@ export function VelocityLogo({ width = 180, height = 60, className = "", variant
   const [imgLoaded, setImgLoaded] = useState(false)
 
   // Use the provided logo
-  const logoUrl =
-    variant === "white"
-      ? "/velocity-logo-white.png"
-      : variant === "footer"
-        ? "/velocity-logo-full.png"
-        : "/velocity-logo-black.png"
+  const logoUrl = "/velocity-logo.png"
 
   return (
     <div

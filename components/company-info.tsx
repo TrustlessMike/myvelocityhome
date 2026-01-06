@@ -1,6 +1,6 @@
 export const CompanyInfo = {
   name: "Velocity Home Loans",
-  address: "203 Brookside Ln",
+  address: "822 E Grand River Ave",
   city: "Brighton",
   state: "MI",
   zip: "48116",

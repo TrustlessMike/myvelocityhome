@@ -18,11 +18,13 @@ interface TeamMemberProps {
   imageSrc: string
   id: string
   reviewsUrl?: string
+  applicationUrl?: string
 }
 
-export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id, reviewsUrl }: TeamMemberProps) {
+export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id, reviewsUrl, applicationUrl }: TeamMemberProps) {
   const [bioExpanded, setBioExpanded] = useState(false)
   const isSam = id === "sam"
+  const applyUrl = applicationUrl || APPLICATION_URL
 
   // Generate structured data for team member
   const personSchema = {
@@ -149,7 +151,7 @@ export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id,
                   </a>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full">
-                  <a href={APPLICATION_URL} target="_blank" rel="noopener noreferrer" className="w-full block">
+                  <a href={applyUrl} target="_blank" rel="noopener noreferrer" className="w-full block">
                     <Button className="w-full bg-primary hover:bg-primary/90">Apply Now</Button>
                   </a>
                 </motion.div>

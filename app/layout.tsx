@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png",
+        url: "https://www.myvelocitymortgage.com/velocity-logo.png",
         width: 1200,
         height: 630,
         alt: "Velocity Home Loans logo",
