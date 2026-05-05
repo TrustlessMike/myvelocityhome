@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "myvelocityhome",
+  "account_id": "dc54b4aee6e9dc699cbce133fadffb93",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-05-01",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "routes": [
+    {
+      "pattern": "myvelocitymortgage.com/*",
+      "zone_name": "myvelocitymortgage.com"
+    },
+    {
+      "pattern": "www.myvelocitymortgage.com/*",
+      "zone_name": "myvelocitymortgage.com"
+    }
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "find_additional_modules": true,
+  "base_dir": ".open-next/server-functions/default",
+  "preserve_file_names": true,
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "myvelocityhome"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MORTGAGE_PDFS",
+      "bucket_name": "myvelocityhome-mortgage-pdfs"
+    }
+  ],
+  "vars": {
+    "NEXTJS_ENV": "production"
+  }
+}

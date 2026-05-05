@@ -5,6 +5,8 @@
 
 # next.js
 /.next/
+/.open-next/
+/.wrangler/
 /out/
 
 # production
@@ -21,6 +23,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# local files
+.DS_Store
+.claude/
 
 # typescript
 *.tsbuildinfo
