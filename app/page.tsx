@@ -24,13 +24,17 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+const HERO_VIDEO_SRC = "/velocity-hero.mp4";
+const HERO_VIDEO_POSTER = "/velocity-hero-poster.jpg";
+
 export default function HomePage() {
   return (
     <MainLayout>
       {/* Hero Video Section */}
       <div className="relative">
         <VideoBackground
-          src="https://cryhpvwjl9tfc2pb.public.blob.vercel-storage.com/8263308-uhd_3840_2160_24fps-X3glsAmZJJ6IRNOF4TVcmDfyIDQPmz-oNJALMHnzjLR4jdYAeyXE2hp3Ngdhv.mp4"
+          src={HERO_VIDEO_SRC}
+          poster={HERO_VIDEO_POSTER}
           priority={true}
           height="80vh"
           className="w-full"

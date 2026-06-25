@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 
 interface VideoBackgroundProps {
   src: string
+  poster?: string
   className?: string
   overlayClassName?: string
   priority?: boolean
@@ -16,6 +17,7 @@ interface VideoBackgroundProps {
 
 export function VideoBackground({
   src,
+  poster,
   className,
   overlayClassName,
   priority = false,
@@ -29,50 +31,13 @@ export function VideoBackground({
     const video = videoRef.current
     if (!video) return
 
-    // Handle video loaded event
-    const handleLoadedData = () => {
+    const markLoaded = () => {
       setIsLoaded(true)
     }
 
-    // Handle video error event
-    const handleError = (e: ErrorEvent) => {
-      console.error("Video loading error:", e)
+    const handleError = (event: Event) => {
+      console.error("Video loading error:", event)
     }
-
-    // Attempt to preload the video
-    if (priority) {
-      video.preload = "auto"
-
-      // Force load attempt
-      const loadVideo = async () => {
-        try {
-          await video.play()
-          video.pause()
-          video.currentTime = 0
-          setIsLoaded(true)
-        } catch (err) {
-          console.warn("Video autoplay prevented:", err)
-          // Still mark as loaded since we'll show it anyway
-          setIsLoaded(true)
-        }
-      }
-
-      loadVideo()
-    }
-
-    video.addEventListener("loadeddata", handleLoadedData)
-    video.addEventListener("error", handleError as EventListener)
-
-    return () => {
-      video.removeEventListener("loadeddata", handleLoadedData)
-      video.removeEventListener("error", handleError as EventListener)
-    }
-  }, [priority])
-
-  // Start playing as soon as possible
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
 
     const playVideo = async () => {
       try {
@@ -82,18 +47,28 @@ export function VideoBackground({
       }
     }
 
-    if (document.readyState === "complete") {
-      playVideo()
-    } else {
-      window.addEventListener("load", playVideo)
-      return () => window.removeEventListener("load", playVideo)
+    setIsLoaded(video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA)
+    video.preload = priority ? "auto" : "metadata"
+    video.addEventListener("loadeddata", markLoaded)
+    video.addEventListener("canplay", playVideo)
+    video.addEventListener("error", handleError as EventListener)
+    video.load()
+    playVideo()
+
+    return () => {
+      video.removeEventListener("loadeddata", markLoaded)
+      video.removeEventListener("canplay", playVideo)
+      video.removeEventListener("error", handleError as EventListener)
     }
-  }, [])
+  }, [priority, src])
 
   return (
     <div className={cn("relative overflow-hidden w-full", className)} style={{ height }}>
       {/* Fallback background color while video loads */}
-      <div className="absolute inset-0 bg-gray-700"></div>
+      <div
+        className="absolute inset-0 bg-gray-700 bg-cover bg-center"
+        style={poster ? { backgroundImage: `url(${poster})` } : undefined}
+      ></div>
 
       <video
         ref={videoRef}
@@ -101,6 +76,8 @@ export function VideoBackground({
         muted
         loop
         playsInline
+        poster={poster}
+        aria-hidden="true"
         className={cn(
           "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
           isLoaded ? "opacity-100" : "opacity-0",
