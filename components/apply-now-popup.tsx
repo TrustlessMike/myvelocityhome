@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { APPLICATION_URL } from "@/lib/constants"
 
+const APPLY_NOW_POPUP_DELAY_MS = 2 * 60 * 1000
+
 export function ApplyNowPopup() {
   const [isVisible, setIsVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
@@ -15,10 +17,10 @@ export function ApplyNowPopup() {
     const hasBeenDismissed = sessionStorage.getItem("popupDismissed") === "true"
 
     if (!hasBeenDismissed) {
-      // Show popup after 30 seconds
+      // Show popup after two minutes so visitors can use the calculator first.
       const timer = setTimeout(() => {
         setIsVisible(true)
-      }, 30000)
+      }, APPLY_NOW_POPUP_DELAY_MS)
 
       return () => clearTimeout(timer)
     }
