@@ -6,23 +6,6 @@ import { VideoBackground } from "@/components/video-background";
 import { PreapprovalButton } from "@/components/preapproval-button";
 import { APPLICATION_URL } from "@/lib/constants";
 import { CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
-
-// Animation variants previously in main-layout.tsx
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 const HERO_VIDEO_SRC = "/velocity-hero.mp4";
 const HERO_VIDEO_POSTER = "/velocity-hero-poster.jpg";
@@ -42,67 +25,44 @@ export default function HomePage() {
         />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
-          >
+          <div className="mb-6">
             <h2 className="text-2xl md:text-3xl font-medium mb-2">
               Velocity Home Loans
             </h2>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
               Fast-Track Your Home Loan
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl"
-          >
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl">
             Competitive rates, personalized service, and a streamlined process
             to help you achieve your homeownership dreams.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex justify-center"
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <PreapprovalButton
-                size="lg"
-                className="bg-white text-primary hover:bg-blue-50"
-              >
-                Get Pre-Approved
-              </PreapprovalButton>
-            </motion.div>
-          </motion.div>
+          <div className="flex justify-center">
+            <PreapprovalButton
+              size="lg"
+              className="bg-white text-primary hover:bg-blue-50 transition-transform hover:scale-105 active:scale-95"
+            >
+              Get Pre-Approved
+            </PreapprovalButton>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl"
-          >
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
             {[
               { icon: <CheckCircle className="h-5 w-5" />, text: "Competitive Rates" },
               { icon: <CheckCircle className="h-5 w-5" />, text: "Fast Pre-Approvals" },
               { icon: <CheckCircle className="h-5 w-5" />, text: "Personalized Service" },
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                variants={fadeIn}
                 className="flex items-center justify-center space-x-2"
               >
                 <div className="text-white">{item.icon}</div>
                 <span>{item.text}</span>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 

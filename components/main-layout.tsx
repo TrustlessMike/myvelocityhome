@@ -3,19 +3,20 @@
 import { useState, useEffect, ReactNode } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, CheckCircle } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import dynamic from "next/dynamic"
+import { Menu, X } from "lucide-react"
 import Script from "next/script"
-import { LandingPage } from "@/components/landing-page"
-import { MortgageCalculator } from "@/components/mortgage-calculator"
 import { CompanyInfo } from "@/components/company-info"
 import { BottomBanner } from "@/components/bottom-banner"
 import { EqualHousingBadge } from "@/components/equal-housing-badge"
 import { APPLICATION_URL } from "@/lib/constants"
 import { generateMortgageBrokerSchema, generateReviewSchema, generatePersonSchema } from "@/components/structured-data"
-import { ApplyNowPopup } from "@/components/apply-now-popup"
-import { VideoBackground } from "@/components/video-background"
 import { PreapprovalButton } from "@/components/preapproval-button"
+
+const ApplyNowPopup = dynamic(
+  () => import("@/components/apply-now-popup").then((module) => module.ApplyNowPopup),
+  { ssr: false },
+)
 
 export function MainLayout({ children }: { children: ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -55,13 +56,10 @@ export function MainLayout({ children }: { children: ReactNode }) {
       />
 
       {/* Header - Simplified */}
-      <motion.header
+      <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-white"
         }`}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
       >
         <div className="container mx-auto px-4">
           {/* Main Navigation */}
@@ -71,9 +69,8 @@ export function MainLayout({ children }: { children: ReactNode }) {
                 <Image
                   src="/velocity-logo.png"
                   alt="Velocity Home Loans Logo"
-                  width={150}
-                  height={50}
-                  className="h-10 w-auto"
+                  width={97}
+                  height={40}
                   priority
                 />
               </Link>
@@ -117,58 +114,48 @@ export function MainLayout({ children }: { children: ReactNode }) {
           </nav>
 
           {/* Mobile Menu */}
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <motion.nav
-                id="mobile-menu"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden py-4 border-t overflow-hidden"
-                aria-label="Mobile navigation"
-              >
-                <div className="flex flex-col space-y-4">
-                  <a
-                    href="#team-section"
-                    className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Our Team
-                  </a>
-                  <a
-                    href="/calculator"
-                    className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Calculator
-                  </a>
-                  <a
-                    href={APPLICATION_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Contact
-                  </a>
-                  <a
-                    href={APPLICATION_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    Apply Now
-                  </a>
-                </div>
-              </motion.nav>
-            )}
-          </AnimatePresence>
+          {mobileMenuOpen && (
+            <nav id="mobile-menu" className="md:hidden py-4 border-t overflow-hidden" aria-label="Mobile navigation">
+              <div className="flex flex-col space-y-4">
+                <a
+                  href="#team-section"
+                  className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Our Team
+                </a>
+                <a
+                  href="/calculator"
+                  className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Calculator
+                </a>
+                <a
+                  href={APPLICATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+                <a
+                  href={APPLICATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base font-medium px-4 py-2 hover:bg-slate-100 rounded-md"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  Apply Now
+                </a>
+              </div>
+            </nav>
+          )}
         </div>
-      </motion.header>
+      </header>
 
       <main className="flex-1 pb-16">
         {children}
@@ -186,9 +173,9 @@ export function MainLayout({ children }: { children: ReactNode }) {
                 <Image
                   src="/velocity-logo.png"
                   alt="Velocity Home Loans Logo"
-                  width={150}
-                  height={50}
-                  className="h-10 w-auto bg-white p-1 rounded"
+                  width={97}
+                  height={40}
+                  className="bg-white p-1 rounded"
                 />
               </div>
               <p className="text-slate-400 mb-4">Fast, reliable mortgage solutions with the velocity you need.</p>

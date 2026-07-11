@@ -36,7 +36,7 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
 
 &quot;Build your own dreams, or someone else will hire you to build theirs.&quot;
 &quot;The best time to plant a tree was 20 years ago. The second best time is now.&quot;"
-            imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-w3y9bWM7nrw18JBPmqzdy40Qzn8vGi.png"
+            imageSrc="/sam-amine.webp"
             id="sam"
             reviewsUrl="https://www.zillow.com/lender-profile/samine186/"
           />
@@ -48,7 +48,7 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
             phone="(248) 320-7066"
             nmls="533751"
             bio="Christa Spencer brings over a decade of expertise in the mortgage industry, with a passion for helping clients navigate the complexities of home financing. As a dedicated mortgage professional, she specializes in creating personalized loan solutions that align with her clients' unique financial goals and circumstances. Christa is known for her exceptional communication skills and ability to simplify the mortgage process, making it accessible and stress-free for first-time homebuyers and experienced homeowners alike. Her commitment to client education ensures that borrowers understand every aspect of their mortgage options, empowering them to make confident decisions. With a reputation for responsiveness and attention to detail, Christa consistently delivers a seamless mortgage experience from application to closing."
-            imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-dJsLeMoP1kwgLnKW6nxn83eiuEZlZB.png"
+            imageSrc="/christa-spencer.webp"
             id="christa"
           />
 
@@ -63,7 +63,7 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
 For me, building relationships is the key to finding the best solutions. I take the time to listen, understand your goals, and then figure out the smartest way forward.
 
 I live here in Brighton with my wife, Bridgette, who teaches in the community, and our three kids—Adalynn, Robby, and Ben. Brighton has been home for the past five years, and it's important to me to serve my clients with the same care and honesty I'd want for my own family."
-            imageSrc="/Photo for Rob.JPG"
+            imageSrc="/robert-jastrzebski.webp"
             id="robert"
             applicationUrl="https://myvelocity.my1003app.com/2654571/register?time=1763754973769"
           />

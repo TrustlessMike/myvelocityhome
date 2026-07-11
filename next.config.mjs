@@ -1,17 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['v0.blob.com'],
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
+  },
+  async headers() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'v0.blob.com',
-        port: '',
-        pathname: '/**',
+        source: "/:path*\\.(png|jpg|jpeg|webp|svg|mp4|ico)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
-    ],
-    unoptimized: true,
+    ]
   },
   eslint: {
     ignoreDuringBuilds: true,

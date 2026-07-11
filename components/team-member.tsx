@@ -25,6 +25,7 @@ export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id,
   const [bioExpanded, setBioExpanded] = useState(false)
   const isSam = id === "sam"
   const applyUrl = applicationUrl || APPLICATION_URL
+  const structuredImageSrc = imageSrc.startsWith("/") ? `https://www.myvelocitymortgage.com${imageSrc}` : imageSrc
 
   // Generate structured data for team member
   const personSchema = {
@@ -40,7 +41,7 @@ export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id,
       "@type": "FinancialService",
       name: "Velocity Home Loans",
     },
-    image: imageSrc,
+    image: structuredImageSrc,
     ...(reviewsUrl && { sameAs: [reviewsUrl] }),
   }
 

@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { EqualHousingBadge } from "@/components/equal-housing-badge"
 
 interface BottomBannerProps {
@@ -17,9 +16,8 @@ export function BottomBanner({ applicationUrl }: BottomBannerProps) {
             <Image
               src="/velocity-logo.png"
               alt="Velocity Home Loans"
-              width={120}
+              width={97}
               height={40}
-              className="h-10 w-auto"
             />
             <div className="ml-4 flex items-center">
               <EqualHousingBadge size="sm" />
@@ -28,18 +26,16 @@ export function BottomBanner({ applicationUrl }: BottomBannerProps) {
           </div>
 
           <div className="flex items-center gap-4">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
-                <button className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium">Apply Now</button>
-              </a>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
-                <button className="border border-primary text-primary px-4 py-2 rounded-md text-sm font-medium">
-                  Contact Us
-                </button>
-              </a>
-            </motion.div>
+            <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+              <button className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium transition-transform hover:scale-105 active:scale-95">
+                Apply Now
+              </button>
+            </a>
+            <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+              <button className="border border-primary text-primary px-4 py-2 rounded-md text-sm font-medium transition-transform hover:scale-105 active:scale-95">
+                Contact Us
+              </button>
+            </a>
           </div>
         </div>
       </div>
