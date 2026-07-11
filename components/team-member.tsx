@@ -63,7 +63,8 @@ export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id,
                 alt={`Portrait of ${name}, ${title} at Velocity Home Loans`}
                 fill
                 className={`object-cover ${isSam ? "object-top" : "object-center"}`}
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 340px"
+                quality={92}
                 priority
               />
             </div>
