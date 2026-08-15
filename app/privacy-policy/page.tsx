@@ -22,9 +22,9 @@ export default function PrivacyPolicyPage() {
         </p>
         <h2 className="text-2xl font-bold pt-4">Information we collect</h2>
         <p>
-          If you send the contact or apply-now form, we collect the name, email, phone number, message, and any loan
-          officer you selected. Forms are processed by Formspree. If you start a full application, that file is collected
-          by our 1003 application vendor under their privacy notice.
+          If you send the contact form, we collect the name, email, phone number, message, and any loan officer you
+          selected. That form is processed by Formspree. If you apply online, you leave this website for our 1003
+          application software; that file is collected by the application vendor under their privacy notice.
         </p>
         <p>
           The site also collects standard server logs and aggregated analytics through Vercel Analytics. We do not sell

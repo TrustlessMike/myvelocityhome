@@ -6,7 +6,7 @@ import { JsonLd, breadcrumbSchema } from "@/components/json-ld"
 export const metadata = pageMetadata({
   title: "Apply Now",
   description:
-    "Schedule a Brighton mortgage consult or start your Velocity Home Loans application. Licensed in Michigan and Florida. NMLS #2706011.",
+    "Start Velocity Home Loans' official 1003 application, or schedule a Brighton consult. Licensed in Michigan and Florida. NMLS #2706011.",
   path: "/apply-now",
 })
 

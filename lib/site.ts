@@ -64,6 +64,7 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
 "The best time to plant a tree was 20 years ago. The second best time is now."`,
     imageSrc: "/sam-amine.webp",
     reviewsUrl: "https://www.zillow.com/lender-profile/samine186/",
+    applicationUrl: "https://myvelocity.my1003app.com/161982/register",
   },
   {
     id: "christa",
@@ -74,6 +75,7 @@ I lead by example and foster a culture of empowerment, helping my team tap into 
     nmls: "533751",
     bio: "Christa Spencer brings over a decade of expertise in the mortgage industry, with a passion for helping clients navigate the complexities of home financing. As a dedicated mortgage professional, she specializes in creating personalized loan solutions that align with her clients' unique financial goals and circumstances. Christa is known for her exceptional communication skills and ability to simplify the mortgage process, making it accessible and stress-free for first-time homebuyers and experienced homeowners alike. Her commitment to client education ensures that borrowers understand every aspect of their mortgage options, empowering them to make confident decisions. With a reputation for responsiveness and attention to detail, Christa consistently delivers a seamless mortgage experience from application to closing.",
     imageSrc: "/christa-spencer.webp",
+    applicationUrl: "https://myvelocity.my1003app.com/533751/register",
   },
   {
     id: "robert",
