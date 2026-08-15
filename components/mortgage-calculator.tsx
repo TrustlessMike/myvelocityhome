@@ -10,6 +10,67 @@ import { MortgageResults } from "@/components/mortgage-results"
 import { AmortizationTable } from "@/components/amortization-table"
 import { PdfExportButton } from "@/components/pdf-export-button"
 
+function computeMortgage(input: {
+  loanAmount: number
+  interestRate: number
+  loanTerm: number
+  propertyTax: number
+  homeInsurance: number
+  hoaFees: number
+  includeAdditionalCosts: boolean
+}) {
+  const monthlyRate = input.interestRate / 100 / 12
+  const numberOfPayments = input.loanTerm * 12
+  const monthlyPrincipalAndInterest =
+    (input.loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) /
+    (Math.pow(1 + monthlyRate, numberOfPayments) - 1)
+  const monthlyPropertyTax = input.propertyTax / 12
+  const monthlyHomeInsurance = input.homeInsurance / 12
+  let monthlyPayment = monthlyPrincipalAndInterest
+  if (input.includeAdditionalCosts) {
+    monthlyPayment += monthlyPropertyTax + monthlyHomeInsurance + (input.hoaFees || 0)
+  }
+
+  const amortizationSchedule = []
+  let remainingBalance = input.loanAmount
+  let totalInterestPaid = 0
+  for (let i = 1; i <= numberOfPayments; i++) {
+    const interestPayment = remainingBalance * monthlyRate
+    const principalPayment = monthlyPrincipalAndInterest - interestPayment
+    remainingBalance -= principalPayment
+    totalInterestPaid += interestPayment
+    if (i % 12 === 0) {
+      amortizationSchedule.push({
+        year: i / 12,
+        principalPayment,
+        interestPayment,
+        totalPayment: monthlyPrincipalAndInterest,
+        remainingBalance: remainingBalance > 0 ? remainingBalance : 0,
+        totalInterestToDate: totalInterestPaid,
+      })
+    }
+  }
+
+  return {
+    monthlyPayment,
+    principalAndInterest: monthlyPrincipalAndInterest,
+    monthlyPropertyTax,
+    monthlyHomeInsurance,
+    totalInterestPaid,
+    amortizationSchedule,
+  }
+}
+
+const INITIAL = computeMortgage({
+  loanAmount: 240000,
+  interestRate: 6.5,
+  loanTerm: 30,
+  propertyTax: 3000,
+  homeInsurance: 1200,
+  hoaFees: 0,
+  includeAdditionalCosts: true,
+})
+
 export function MortgageCalculator() {
   const [homePrice, setHomePrice] = useState(300000)
   const [downPayment, setDownPayment] = useState(60000)
@@ -21,12 +82,12 @@ export function MortgageCalculator() {
   const [hoaFees, setHoaFees] = useState(0)
   const [includeAdditionalCosts, setIncludeAdditionalCosts] = useState(true)
   const [loanAmount, setLoanAmount] = useState(homePrice - downPayment)
-  const [monthlyPayment, setMonthlyPayment] = useState(0)
-  const [principalAndInterest, setPrincipalAndInterest] = useState(0)
-  const [monthlyPropertyTax, setMonthlyPropertyTax] = useState(propertyTax / 12)
-  const [monthlyHomeInsurance, setMonthlyHomeInsurance] = useState(homeInsurance / 12)
-  const [totalInterestPaid, setTotalInterestPaid] = useState(0)
-  const [amortizationSchedule, setAmortizationSchedule] = useState<any[]>([])
+  const [monthlyPayment, setMonthlyPayment] = useState(INITIAL.monthlyPayment)
+  const [principalAndInterest, setPrincipalAndInterest] = useState(INITIAL.principalAndInterest)
+  const [monthlyPropertyTax, setMonthlyPropertyTax] = useState(INITIAL.monthlyPropertyTax)
+  const [monthlyHomeInsurance, setMonthlyHomeInsurance] = useState(INITIAL.monthlyHomeInsurance)
+  const [totalInterestPaid, setTotalInterestPaid] = useState(INITIAL.totalInterestPaid)
+  const [amortizationSchedule, setAmortizationSchedule] = useState<any[]>(INITIAL.amortizationSchedule)
 
   // Update loan amount when home price or down payment changes
   useEffect(() => {

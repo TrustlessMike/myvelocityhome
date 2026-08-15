@@ -31,6 +31,13 @@ export function VideoBackground({
     const video = videoRef.current
     if (!video) return
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const isNarrow = window.matchMedia("(max-width: 768px)").matches
+    if (prefersReducedMotion || isNarrow) {
+      setIsLoaded(false)
+      return
+    }
+
     const markLoaded = () => {
       setIsLoaded(true)
     }

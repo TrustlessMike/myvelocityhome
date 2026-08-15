@@ -4,7 +4,9 @@ import * as React from "react"
 import { Calculator, CheckCircle, DollarSign, Shield, Star } from "lucide-react"
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { motion } from "framer-motion"
-import { PreapprovalButton } from "@/components/preapproval-button"
+import Link from "next/link"
+import { ApplyLink } from "@/components/preapproval-button"
+import { CompanyInfo, loanProducts } from "@/lib/site"
 import {
   Carousel,
   CarouselContent,
@@ -14,11 +16,7 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 
-interface LandingPageProps {
-  applicationUrl: string
-}
-
-export function LandingPage({ applicationUrl }: LandingPageProps) {
+export function LandingPage() {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -34,37 +32,7 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
     },
   }
 
-  const loanOptions = [
-    {
-      title: "Conventional Loans",
-      description: "Traditional mortgage loans with competitive rates and flexible terms.",
-      features: ["Down payments as low as 3%", "Fixed & adjustable rates", "Primary & secondary homes"],
-    },
-    {
-      title: "FHA Loans",
-      description: "Government-backed loans with more flexible qualification requirements.",
-      features: [
-        "Down payments as low as 3.5%",
-        "Lower credit score options",
-        "Perfect for first-time buyers",
-      ],
-    },
-    {
-      title: "VA Loans",
-      description: "Exclusive loans for veterans, active military, and eligible spouses.",
-      features: ["No down payment required", "No PMI required", "Competitive interest rates"],
-    },
-    {
-      title: "Jumbo Loans",
-      description: "Financing options for high-value properties above conforming loan limits.",
-      features: ["Higher loan amounts", "Competitive rates", "Various term options"],
-    },
-    {
-      title: "Refinance Options",
-      description: "Lower your monthly payment or tap into your home's equity.",
-      features: ["Rate and term refinance", "Cash-out refinance", "Streamline options"],
-    },
-  ];
+  const loanOptions = loanProducts
 
   return (
     <div>
@@ -189,7 +157,7 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
                     <motion.div variants={fadeIn} whileHover={{ y: -5, transition: { duration: 0.2 } }} className="h-full">
                       <div className="velocity-card equal-height">
                         <div className="velocity-card-content">
-                          <h3 className="text-xl font-bold mb-2">{loan.title}</h3>
+                          <h3 className="text-xl font-bold mb-2">{loan.shortTitle}</h3>
                           <p className="text-slate-600 mb-4 text-sm min-h-[60px]">{loan.description}</p>
                           <ul className="space-y-2 mb-6 flex-grow">
                             {loan.features.map((feature, j) => (
@@ -199,14 +167,12 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
                               </li>
                             ))}
                           </ul>
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <PreapprovalButton
-                              className="mt-auto w-full"
-                              variant="default"
-                            >
-                              Learn More
-                            </PreapprovalButton>
-                          </motion.div>
+                          <Link
+                            href={loan.href}
+                            className="mt-auto inline-flex items-center justify-center w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90"
+                          >
+                            Learn More
+                          </Link>
                         </div>
                       </div>
                     </motion.div>
@@ -257,18 +223,21 @@ export function LandingPage({ applicationUrl }: LandingPageProps) {
                   <h3 className="text-xl font-bold mb-4">Schedule a Consultation</h3>
                   <p className="text-slate-600 mb-6">
                     Call us at{" "}
-                    <a href="tel:2489748711" className="text-primary font-medium hover:underline">
-                      248-974-8711
+                    <a href={CompanyInfo.phoneHref} className="text-primary font-medium hover:underline">
+                      {CompanyInfo.phone}
                     </a>{" "}
-                    to schedule a 30-minute phone consultation or an in-person meeting at our office.
+                    to schedule a 30-minute phone consultation or an in-person meeting at {CompanyInfo.address} in{" "}
+                    {CompanyInfo.city}.
                   </p>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <a href="tel:2489748711" className="inline-block">
-                      <PreapprovalButton variant="outline" className="border-primary text-primary hover:bg-primary/5">
-                        Call Now
-                      </PreapprovalButton>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                      href={CompanyInfo.phoneHref}
+                      className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5"
+                    >
+                      Call Now
                     </a>
-                  </motion.div>
+                    <ApplyLink>Get Pre-Approved</ApplyLink>
+                  </div>
                 </div>
               </div>
             </motion.div>
