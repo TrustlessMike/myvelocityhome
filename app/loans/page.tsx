@@ -26,7 +26,7 @@ export default function LoansIndexPage() {
           <Link key={loan.slug} href={loan.href} className="velocity-card p-8 hover:border-primary/40 block">
             <h2 className="text-2xl font-bold mb-2">{loan.shortTitle}</h2>
             <p className="text-slate-600 mb-4">{loan.description}</p>
-            <span className="text-primary font-medium">Learn more</span>
+            <span className="text-primary font-medium">Read {loan.shortTitle} details</span>
           </Link>
         ))}
       </div>

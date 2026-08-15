@@ -121,7 +121,7 @@ export function LandingPage() {
                     href={loan.href}
                     className="mt-auto inline-flex items-center justify-center w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90"
                   >
-                    Learn more
+                    Learn more about {loan.shortTitle}
                   </Link>
                 </div>
               </div>
@@ -171,9 +171,10 @@ export function LandingPage() {
             {testimonials.map((testimonial) => (
               <div key={testimonial.name} className="velocity-card equal-height">
                 <div className="velocity-card-content flex flex-col h-full">
-                  <div className="flex mb-4" aria-label="5 out of 5 stars">
+                  <div className="flex mb-4">
+                    <span className="sr-only">5 out of 5 stars</span>
                     {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} className="h-5 w-5 text-brass fill-brass" />
+                      <Star key={j} className="h-5 w-5 text-brass fill-brass" aria-hidden="true" />
                     ))}
                   </div>
                   <p className="text-slate-600 mb-4 text-sm flex-grow">{testimonial.review}</p>
