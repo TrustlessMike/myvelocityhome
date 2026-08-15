@@ -13,7 +13,7 @@ export const CompanyInfo = {
   phoneHref: "tel:2489748711",
   email: "info@myvelocitymortgage.com",
   nmls: "2706011",
-  nmlsUrl: "https://www.nmlsconsumeraccess.org/",
+  nmlsUrl: "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/2706011",
   zillowUrl: "https://www.zillow.com/lender-profile/samine186/",
   linkedInUrl: "https://www.linkedin.com/company/velocity-home-loans",
   reviewCount: 111,
@@ -317,6 +317,21 @@ export const areaPages: AreaPage[] = [
       "If you are keeping a Michigan home and buying in Florida, we can look at both pictures so the new payment and the old mortgage are planned together.",
     ],
     cities: ["Florida primary homes", "Second homes", "Relocations from Michigan"],
+  },
+]
+
+export const homeFaqs = [
+  {
+    q: "Is Velocity Home Loans a lender or a broker?",
+    a: "Velocity is a licensed mortgage broker. We shop wholesale lenders instead of originating from a single bank rate sheet.",
+  },
+  {
+    q: "Where is the office?",
+    a: "203 Brookside Lane, Brighton, Michigan 48116. Call (248) 974-8711 or use the contact form to schedule a 30-minute consult.",
+  },
+  {
+    q: "Which states are you licensed in?",
+    a: "Michigan and Florida. Confirm current licensing on NMLS Consumer Access, NMLS #2706011.",
   },
 ]
 

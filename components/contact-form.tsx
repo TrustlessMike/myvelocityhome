@@ -102,7 +102,11 @@ export function ContactForm({
               </div>
             </div>
 
-            {formError && <div className="bg-red-50 text-red-500 p-3 rounded-md">{formError}</div>}
+            {formError && (
+              <div className="bg-red-50 text-red-600 p-3 rounded-md" role="alert">
+                {formError}
+              </div>
+            )}
 
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-2">

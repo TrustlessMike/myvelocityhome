@@ -35,10 +35,7 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ id:
       />
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="sr-only">
-            {member.name}, {member.title}
-          </h1>
-          <TeamMember {...member} headingAs="h2" priority />
+          <TeamMember {...member} headingAs="h1" priority />
         </div>
       </div>
     </div>

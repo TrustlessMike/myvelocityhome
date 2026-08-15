@@ -15,8 +15,16 @@ const ApplyNowPopup = dynamic(
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-navy"
+      >
+        Skip to content
+      </a>
       <SiteHeader />
-      <main className="flex-1 pb-20">{children}</main>
+      <main id="main-content" className="flex-1 pb-20">
+        {children}
+      </main>
       <SiteFooter />
       <BottomBanner applicationUrl={APPLICATION_URL} />
       <ApplyNowPopup />

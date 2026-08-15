@@ -122,17 +122,17 @@ export function TeamMember({ name, title, email, phone, nmls, bio, imageSrc, id,
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
-                  <Link href={`/contact?officer=${id}`} className="w-full block">
-                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/5">
-                      Contact {name.split(" ")[0]}
-                    </Button>
-                  </Link>
+                <motion.div className="w-full">
+                  <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary/5">
+                    <Link href={`/contact?officer=${id}`}>Contact {name.split(" ")[0]}</Link>
+                  </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full">
-                  <a href={applyUrl} target="_blank" rel="noopener noreferrer" className="w-full block">
-                    <Button className="w-full bg-primary hover:bg-primary/90">Apply Now</Button>
-                  </a>
+                <motion.div className="w-full">
+                  <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                    <a href={applyUrl} target="_blank" rel="noopener noreferrer">
+                      Apply Now
+                    </a>
+                  </Button>
                 </motion.div>
               </div>
             </div>
