@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { APPLICATION_URL } from "@/lib/constants"
+import { APPLICATION_URL, CompanyInfo } from "@/lib/site"
 
 const APPLY_NOW_POPUP_DELAY_MS = 2 * 60 * 1000
 
@@ -75,11 +75,14 @@ export function ApplyNowPopup() {
                   mortgage experts.
                 </p>
 
-                <div className="flex justify-center">
+                <div className="flex flex-col gap-3">
                   <Button className="w-full bg-primary hover:bg-primary/90" asChild>
                     <a href={APPLICATION_URL} target="_blank" rel="noopener noreferrer">
                       Apply Now
                     </a>
+                  </Button>
+                  <Button variant="outline" className="w-full" asChild>
+                    <a href={CompanyInfo.phoneHref}>Call a loan officer</a>
                   </Button>
                 </div>
               </div>

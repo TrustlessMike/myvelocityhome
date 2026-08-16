@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { EqualHousingBadge } from "@/components/equal-housing-badge"
+import { CompanyInfo } from "@/lib/site"
 
 interface BottomBannerProps {
   applicationUrl: string
@@ -9,7 +10,7 @@ interface BottomBannerProps {
 
 export function BottomBanner({ applicationUrl }: BottomBannerProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-navy/10 z-40">
       <div className="container mx-auto px-4 py-3">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center">
@@ -26,15 +27,19 @@ export function BottomBanner({ applicationUrl }: BottomBannerProps) {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
-              <button className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium transition-transform hover:scale-105 active:scale-95">
-                Apply Now
-              </button>
+            <a
+              href={applicationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90"
+            >
+              Apply Now
             </a>
-            <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
-              <button className="border border-primary text-primary px-4 py-2 rounded-md text-sm font-medium transition-transform hover:scale-105 active:scale-95">
-                Contact Us
-              </button>
+            <a
+              href={CompanyInfo.phoneHref}
+              className="border border-primary text-primary px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/5"
+            >
+              Call a loan officer
             </a>
           </div>
         </div>

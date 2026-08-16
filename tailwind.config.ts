@@ -19,14 +19,22 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        heading: ["var(--font-serif)", "Georgia", "serif"],
+      },
       colors: {
+        navy: "#0B1F3A",
+        paper: "#F6F1E8",
+        brass: "#B0893E",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0052cc", // Velocity blue
+          DEFAULT: "#0B4F9C",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

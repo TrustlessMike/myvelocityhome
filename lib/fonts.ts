@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google"
+import { Fraunces, Source_Sans_3 } from "next/font/google"
 
-export const inter = Inter({
+export const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-sans",
+})
+
+export const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
 })

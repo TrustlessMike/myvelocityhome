@@ -86,7 +86,9 @@ export function EnhancedTabs({ tabs, defaultValue, onChange, className }: Enhanc
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
-            ref={(el) => (tabRefs.current[index] = el)}
+            ref={(el) => {
+              tabRefs.current[index] = el
+            }}
             onClick={() => handleTabClick(tab.id)}
             onMouseEnter={() => setHoveredTab(tab.id)}
             onMouseLeave={() => setHoveredTab(null)}

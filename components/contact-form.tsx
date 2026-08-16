@@ -15,12 +15,20 @@ import { Loader2 } from "lucide-react"
 // Replace with your actual Formspree form ID
 const FORMSPREE_CONTACT_ID = "xvoelkzp"
 
-export function ContactForm() {
+export function ContactForm({
+  officerName,
+  officerId,
+}: {
+  officerName?: string
+  officerId?: string
+}) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
+    officerName: officerName || "",
+    officerId: officerId || "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -58,8 +66,12 @@ export function ContactForm() {
   return (
     <div className="velocity-card">
       <div className="velocity-card-header">
-        <h2 className="velocity-card-title">Contact Us</h2>
-        <p className="velocity-card-description">Have questions? We're here to help.</p>
+        <h2 className="velocity-card-title">{officerName ? `Message ${officerName}` : "Send a message"}</h2>
+        <p className="velocity-card-description">
+          {officerName
+            ? "This goes to the office with that loan officer tagged. We reply by phone or email."
+            : "Tell us whether you are buying, refinancing, or still figuring it out. Phone is optional but speeds the callback."}
+        </p>
       </div>
       <div className="velocity-card-content">
         {!formSubmitted ? (
@@ -74,7 +86,7 @@ export function ContactForm() {
                 <Input id="email" type="email" required value={formData.email} onChange={handleInputChange} />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone</Label>
+                <Label htmlFor="phone">Phone (optional, but we call faster)</Label>
                 <Input id="phone" type="tel" value={formData.phone} onChange={handleInputChange} />
               </div>
               <div className="space-y-2 md:col-span-2">
@@ -90,7 +102,11 @@ export function ContactForm() {
               </div>
             </div>
 
-            {formError && <div className="bg-red-50 text-red-500 p-3 rounded-md">{formError}</div>}
+            {formError && (
+              <div className="bg-red-50 text-red-600 p-3 rounded-md" role="alert">
+                {formError}
+              </div>
+            )}
 
             <div className="flex justify-between items-center">
               <div className="flex items-center space-x-2">
