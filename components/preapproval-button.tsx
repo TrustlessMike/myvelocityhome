@@ -1,31 +1,42 @@
 "use client"
 
 import type React from "react"
-import type { VariantProps } from "class-variance-authority"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { APPLICATION_URL } from "@/lib/site"
+import { type VariantProps } from "class-variance-authority"
 
-interface ApplyLinkProps extends VariantProps<typeof buttonVariants> {
+import { useState } from "react"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { ConfettiEffect } from "@/components/confetti-effect"
+import { APPLICATION_URL } from "@/lib/constants"
+
+interface PreapprovalButtonProps extends VariantProps<typeof buttonVariants> {
   className?: string
   children?: React.ReactNode
-  href?: string
 }
 
-export function ApplyLink({
+export function PreapprovalButton({
   className,
   variant = "default",
   size,
-  href = APPLICATION_URL,
-  children = "Get Pre-Approved",
-}: ApplyLinkProps) {
+  children = "Get Preapproved",
+  ...props
+}: PreapprovalButtonProps) {
+  const [triggerConfetti, setTriggerConfetti] = useState(false)
+
+  const handleClick = () => {
+    setTriggerConfetti(true)
+
+    // After a short delay, navigate to the application URL
+    setTimeout(() => {
+      window.open(APPLICATION_URL, "_blank", "noopener,noreferrer")
+    }, 500)
+  }
+
   return (
-    <Button asChild variant={variant} size={size} className={className}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
+    <>
+      <Button variant={variant} size={size} className={className} onClick={handleClick} {...props}>
         {children}
-      </a>
-    </Button>
+      </Button>
+      <ConfettiEffect trigger={triggerConfetti} onComplete={() => setTriggerConfetti(false)} />
+    </>
   )
 }
-
-/** @deprecated Use ApplyLink. Kept so older imports keep applying instead of throwing. */
-export const PreapprovalButton = ApplyLink

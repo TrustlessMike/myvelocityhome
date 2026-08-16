@@ -2,8 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { useRef, useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 interface VideoBackgroundProps {
@@ -25,46 +24,69 @@ export function VideoBackground({
   height = "auto",
   children,
 }: VideoBackgroundProps) {
-  const [shouldPlayVideo, setShouldPlayVideo] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    const isNarrow = window.matchMedia("(max-width: 768px)").matches
-    if (!prefersReducedMotion && !isNarrow) {
-      setShouldPlayVideo(true)
+    const video = videoRef.current
+    if (!video) return
+
+    const markLoaded = () => {
+      setIsLoaded(true)
     }
-  }, [])
+
+    const handleError = (event: Event) => {
+      console.error("Video loading error:", event)
+    }
+
+    const playVideo = async () => {
+      try {
+        await video.play()
+      } catch (err) {
+        console.warn("Video autoplay prevented:", err)
+      }
+    }
+
+    setIsLoaded(video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA)
+    video.preload = priority ? "auto" : "metadata"
+    video.addEventListener("loadeddata", markLoaded)
+    video.addEventListener("canplay", playVideo)
+    video.addEventListener("error", handleError as EventListener)
+    video.load()
+    playVideo()
+
+    return () => {
+      video.removeEventListener("loadeddata", markLoaded)
+      video.removeEventListener("canplay", playVideo)
+      video.removeEventListener("error", handleError as EventListener)
+    }
+  }, [priority, src])
 
   return (
     <div className={cn("relative overflow-hidden w-full", className)} style={{ height }}>
-      {poster ? (
-        <Image
-          src={poster}
-          alt=""
-          fill
-          priority={priority}
-          fetchPriority={priority ? "high" : "auto"}
-          sizes="100vw"
-          quality={75}
-          className="object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-navy" />
-      )}
+      {/* Fallback background color while video loads */}
+      <div
+        className="absolute inset-0 bg-gray-700 bg-cover bg-center"
+        style={poster ? { backgroundImage: `url(${poster})` } : undefined}
+      ></div>
 
-      {shouldPlayVideo && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
-          preload="metadata"
-        >
-          <source src={src} type="video/mp4" />
-        </video>
-      )}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={poster}
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+          isLoaded ? "opacity-100" : "opacity-0",
+        )}
+        preload={priority ? "auto" : "metadata"}
+      >
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <div className={cn("absolute inset-0 bg-black/40", overlayClassName)} aria-hidden="true" />
       {children}

@@ -75,14 +75,11 @@ export function ApplyNowPopup() {
                   mortgage experts.
                 </p>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex justify-center">
                   <Button className="w-full bg-primary hover:bg-primary/90" asChild>
                     <a href={APPLICATION_URL} target="_blank" rel="noopener noreferrer">
                       Apply Now
                     </a>
-                  </Button>
-                  <Button variant="outline" className="w-full" asChild>
-                    <a href="/contact">Talk to the office</a>
                   </Button>
                 </div>
               </div>

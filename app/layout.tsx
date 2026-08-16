@@ -1,25 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { fraunces, sourceSans } from "@/lib/fonts"
+import { inter } from "@/lib/fonts"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
-import { SiteShell } from "@/components/site-shell"
-import { JsonLd, organizationSchema } from "@/components/json-ld"
-import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Velocity Home Loans | Brighton MI Mortgage Broker",
-    template: "%s | Velocity Home Loans",
-  },
+  title: "Velocity Home Loans | Fast, Reliable Mortgage Solutions in Michigan",
   description:
-    "Brighton-based mortgage broker licensed in Michigan and Florida. Competitive wholesale rates, named loan officers, and fast pre-approvals. NMLS #2706011.",
+    "Velocity Home Loans offers competitive mortgage rates, personalized service, and a streamlined application process with 5-star rated mortgage consultants to help you achieve your homeownership dreams.",
   keywords:
-    "mortgage broker Brighton MI, Michigan mortgage, Florida mortgage, FHA loans, VA loans, conventional loans, jumbo loans, refinance",
+    "mortgage, home loans, mortgage broker, mortgage rates, refinance, FHA loans, VA loans, conventional loans, jumbo loans, Michigan mortgage",
   authors: [{ name: "Sam Amine", url: "https://www.zillow.com/lender-profile/samine186/" }],
   creator: "Velocity Home Loans",
   publisher: "Velocity Home Loans",
@@ -29,22 +22,33 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: "https://www.myvelocitymortgage.com",
   },
   openGraph: {
-    title: "Velocity Home Loans | Brighton MI Mortgage Broker",
+    title: "Velocity Home Loans | Fast, Reliable Mortgage Solutions in Michigan",
     description:
-      "Get pre-approved with a named Brighton loan officer. Licensed in Michigan and Florida. NMLS #2706011.",
-    url: SITE_URL,
+      "Get pre-approved with our 5-star rated mortgage consultants. Competitive rates and personalized service.",
+    url: "https://www.myvelocitymortgage.com",
     siteName: "Velocity Home Loans",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://www.myvelocitymortgage.com/velocity-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Velocity Home Loans logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Velocity Home Loans | Brighton MI Mortgage Broker",
+    title: "Velocity Home Loans | Fast, Reliable Mortgage Solutions",
     description:
-      "Get pre-approved with a named Brighton loan officer. Licensed in Michigan and Florida. NMLS #2706011.",
+      "Get pre-approved with our 5-star rated mortgage consultants. Competitive rates and personalized service.",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Velocity%20Home%20Loans%20Google%20Logo-vEDhFyrYPWMaPW0Z0IputoBM61v3d5.png",
+    ],
   },
   robots: {
     index: true,
@@ -68,6 +72,7 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -76,13 +81,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${fraunces.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased">
-        <JsonLd data={organizationSchema()} />
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+      <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <SiteShell>
-            <Suspense>{children}</Suspense>
-          </SiteShell>
+          <Suspense>{children}</Suspense>
           <Analytics />
           <Toaster />
         </ThemeProvider>

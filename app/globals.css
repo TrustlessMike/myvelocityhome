@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 40 33% 97%;
-    --foreground: 215 48% 12%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 210 87% 33%;
-    --primary-foreground: 40 33% 97%;
+    --primary: 214 100% 40%; /* Velocity blue */
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -73,13 +73,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1,
-  h2,
-  h3,
-  .font-heading {
-    font-family: var(--font-serif), Georgia, serif;
-    letter-spacing: -0.02em;
-  }
 }
 
 @layer utilities {
@@ -116,11 +109,11 @@
 
 /* Standardized card styling */
 .velocity-card {
-  @apply bg-white rounded-sm overflow-hidden transition-all duration-300 border border-navy/10;
+  @apply bg-white rounded-lg border-none shadow-md overflow-hidden transition-all duration-300;
 }
 
 .velocity-card:hover {
-  @apply border-navy/20;
+  @apply shadow-lg;
 }
 
 .velocity-card-header {

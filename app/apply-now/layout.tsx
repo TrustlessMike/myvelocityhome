@@ -2,8 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Apply or Schedule",
-  description: "Schedule a consultation or start a Velocity Home Loans application with a named Brighton loan officer.",
+  title: "Apply Now | Velocity Home Loans",
+  description: "Apply for a mortgage or schedule a consultation with one of our loan officers.",
 }
 
 export default function ApplyNowLayout({
